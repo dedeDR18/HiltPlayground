@@ -1,5 +1,7 @@
 package id.learn.android.hiltplayground.domain.repository
 
-interface IRepository {
+import id.learn.android.hiltplayground.domain.model.Post
 
+interface IRepository {
+    fun getPost(): List<Post>
 }
