@@ -22,34 +22,34 @@ class Repository @Inject constructor(
 ) : IRepository {
 
 
-//    @SuppressLint("CheckResult")
-//    override fun getPost() {
-//            //val resultData = PublishSubject.create<List<PostResponseItem>>()
-//            val mCompositeDisposable = CompositeDisposable()
-//
-//            val client = api.getPost()
-//
-//             val response = client
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .doOnSuccess{ listPost ->
-//                    if (listPost.isNotEmpty()){
-//                        val data = DataMapper.mapPostResponseToPostEntity(listPost)
-//                        database.jphdDao().insertPost(data)
-//                            .subscribeOn(Schedulers.io())
-//                            .observeOn(AndroidSchedulers.mainThread())
-//                            .subscribe()
-//                    } else {
-//                        Log.d("TAG","List Kosong")
-//                    }
-//
-//                }
-//                .doOnError {
-//                    Log.d("TAG","Error while fetch data...")
-//                }
-//            mCompositeDisposable.add(response)
-//
-//
-//    }
+    @SuppressLint("CheckResult")
+    override fun getPost() {
+            //val resultData = PublishSubject.create<List<PostResponseItem>>()
+            val mCompositeDisposable = CompositeDisposable()
+
+            val client = api.getPost()
+
+             val response = client
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess{ listPost ->
+                    if (listPost.isNotEmpty()){
+                        val data = DataMapper.mapPostResponseToPostEntity(listPost)
+                        database.jphdDao().insertPost(data)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe()
+                    } else {
+                        Log.d("TAG","List Kosong")
+                    }
+
+                }
+                .doOnError {
+                    Log.d("TAG","Error while fetch data...")
+                }
+            mCompositeDisposable.add(response)
+
+
+    }
 
 }
